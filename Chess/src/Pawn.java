@@ -11,6 +11,18 @@ public class Pawn extends Pieces{
             return false;
         }
 
+        if(board[newX][newY] != null && board[newX][newY].color == this.color){
+            return false;
+        }
+
+        if(this.color == "white" && this.y-newY==2 && board[this.x][newY+1] != null){
+            return false;
+        }
+
+        if(this.color == "black" && newY-this.y==2 && board[this.x][newY-1] != null){
+            return false;
+        }
+
         if(this.color == "white" && this.x == newX && this.y == 6 && (this.y-newY==1 || this.y-newY==2)) {
             this.y = newY;
             return true;

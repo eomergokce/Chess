@@ -11,6 +11,10 @@ public class King extends Pieces{
             return false;
         }
 
+        if(board[newX][newY] != null && board[newX][newY].color == this.color){
+            return false;
+        }
+
         if(Math.abs(this.x-newX)==1 && Math.abs(this.y-newY)==1
             || this.x==newX && Math.abs(this.y-newY)==1
             || this.y==newY && Math.abs(this.x-newX)==1) {
