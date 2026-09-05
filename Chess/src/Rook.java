@@ -1,19 +1,11 @@
 public class Rook extends Pieces{
 
-    public Rook(String color, int x, int y){
-        super(color, x, y);
+    public Rook(Color color, int x, int y){
+        super(PieceType.ROOK, color, x, y);
     }
 
     @Override
     public boolean move(int newX, int newY, Pieces[][] board) {
-
-        if(!super.move(newX, newY, board)){     //tahta sınırı
-            return false;
-        }
-
-        if(board[newX][newY] != null && board[newX][newY].color == this.color){
-            return false;
-        }
 
         {
             int j=0;
@@ -30,8 +22,8 @@ public class Rook extends Pieces{
                         }
                     }
                 }
-                if(j!=Math.abs(this.x-newX)-1){
-                    return false;
+                if(j==Math.abs(this.x-newX)-1){
+                    return true;
                 }
             }
         }
@@ -51,20 +43,10 @@ public class Rook extends Pieces{
                         }
                     }
                 }
-                if(j!=Math.abs(this.y-newY)-1){
-                    return false;
+                if(j==Math.abs(this.y-newY)-1){
+                    return true;
                 }
             }
-        }
-
-        if(this.x == newX){
-            this.y = newY;
-            return true;
-        }
-
-        if(this.y == newY){
-            this.x = newX;
-            return true;
         }
 
         return false;

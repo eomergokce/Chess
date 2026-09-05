@@ -1,24 +1,14 @@
 public class Knight extends Pieces{
 
-    public Knight(String color, int x, int y){
-        super(color, x, y);
+    public Knight(Color color, int x, int y){
+        super(PieceType.KNIGHT, color, x, y);
     }
 
     @Override
     public boolean move(int newX, int newY, Pieces[][] board) {
 
-        if(!super.move(newX, newY, board)){
-            return false;
-        }
-
-        if(board[newX][newY] != null && board[newX][newY].color == this.color){
-            return false;
-        }
-
         if(Math.abs(this.x-newX)==2 && Math.abs(this.y-newY)==1
-            || Math.abs(this.y-newY)==2 && Math.abs(this.x-newX)==1) {
-            this.y = newY;
-            this.x = newX;
+                || Math.abs(this.y-newY)==2 && Math.abs(this.x-newX)==1) {
             return true;
         }
 

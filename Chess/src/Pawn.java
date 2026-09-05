@@ -1,58 +1,44 @@
 public class Pawn extends Pieces{
 
-    public Pawn(String color, int x, int y){    //javada constructor miras alınmaz
-        super(color, x, y);
+    public Pawn(Color color, int x, int y){    //javada constructor miras alınmaz
+        super(PieceType.PAWN, color, x, y);
     }
 
     @Override
     public boolean move(int newX, int newY, Pieces[][] board) {
 
-        if(!super.move(newX, newY, board)){
-            return false;
+        if(board[newX][newY] == null){
+
+            if(this.color==Color.WHITE){
+                if(this.y==6 && newY==4 && board[this.x][5]==null){
+                    return true;
+                }
+                else if(this.y-newY==1){
+                    return true;
+                }
+            }
+
+            else{
+                if(this.y==1 && newY==3 && board[this.x][2]==null){
+                    return true;
+                }
+                else if(newY-this.y==1){
+                    return true;
+                }
+            }
         }
 
-        if(board[newX][newY] != null && board[newX][newY].color == this.color){
-            return false;
-        }
-
-        if(this.color == "white" && this.y-newY==2 && board[this.x][newY+1] != null){
-            return false;
-        }
-
-        if(this.color == "black" && newY-this.y==2 && board[this.x][newY-1] != null){
-            return false;
-        }
-
-        if(this.color == "white" && this.x == newX && this.y == 6 && (this.y-newY==1 || this.y-newY==2)) {
-            this.y = newY;
-            return true;
-        }
-
-        if(this.color == "white" && this.x == newX && this.y-newY==1) {
-            this.y = newY;
-            return true;
-        }
-
-        if(this.color == "black" && this.x == newX && this.y == 1 && (newY-this.y==1 || newY-this.y==2)) {
-            this.y = newY;
-            return true;
-        }
-
-        if(this.color == "black" && this.x == newX && newY-this.y==1) {
-            this.y = newY;
-            return true;
-        }
-
-        if(this.color == "white" && Math.abs(this.x - newX)==1 && this.y-newY==1){
-            this.x = newX;
-            this.y = newY;
-            return true;
-        }
-
-        if(this.color == "black" && Math.abs(this.x - newX)==1 && newY-this.y==1){
-            this.x = newX;
-            this.y = newY;
-            return true;
+        else{
+            if(this.color==Color.WHITE && this.y-newY==1){
+                if(Math.abs(newX-this.x)==1){
+                    return true;
+                }
+            }
+            else if(this.color==Color.BLACK && newY-this.y==1){
+                if(Math.abs(newX-this.x)==1){
+                    return true;
+                }
+            }
         }
 
         return false;
