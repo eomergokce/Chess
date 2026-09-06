@@ -4,7 +4,6 @@ public class Knight extends Pieces{
         super(PieceType.KNIGHT, color, x, y);
     }
 
-    @Override
     public boolean move(int newX, int newY, Pieces[][] board) {
 
         if(Math.abs(this.x-newX)==2 && Math.abs(this.y-newY)==1

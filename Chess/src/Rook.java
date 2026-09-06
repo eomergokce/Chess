@@ -4,7 +4,6 @@ public class Rook extends Pieces{
         super(PieceType.ROOK, color, x, y);
     }
 
-    @Override
     public boolean move(int newX, int newY, Pieces[][] board) {
 
         {

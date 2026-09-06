@@ -4,10 +4,10 @@ public class Bishop extends Pieces{
         super(PieceType.BISHOP, color, x, y);
     }
 
-    @Override
     public boolean move(int newX, int newY, Pieces[][] board) {
 
-        {
+        if(Math.abs(this.x-newX)==Math.abs(this.y-newY)){
+
             int j=0;
             for(int i=1; i<Math.abs(this.x-newX); i++){ //ör. 2 adım atar ama 1 boş kareden geçer
                 if(this.x>newX && this.y>newY){

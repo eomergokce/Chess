@@ -1,4 +1,4 @@
-public class Pieces {
+public abstract class Pieces {
 
     PieceType pieceType;
     Color color;
@@ -12,12 +12,13 @@ public class Pieces {
         this.y = y;
     }
 
-    public boolean move(int newX, int newY, Pieces[][] board){  //kural kitapçığı
+    public abstract boolean move(int newX, int newY, Pieces[][] board);
+
+    public boolean pieceMove(int newX, int newY, Pieces[][] board){  //kural kitapçığı
 
         if(newX<0 || newX>7 || newY<0 || newY>7){
             return false;
         }
-
         if(board[newX][newY] != null && board[newX][newY].color == this.color){
             return false;
         }

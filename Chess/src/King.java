@@ -4,10 +4,9 @@ public class King extends Pieces{
         super(PieceType.KING, color, x, y);
     }
 
-    @Override
     public boolean move(int newX, int newY, Pieces[][] board) {
 
-        if(Math.abs(this.x-newX)==1 || Math.abs(this.y-newY)==1) {
+        if(Math.abs(this.x-newX)<=1 && Math.abs(this.y-newY)<=1) {
             return true;
         }
 

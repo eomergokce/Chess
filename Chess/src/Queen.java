@@ -4,7 +4,6 @@ public class Queen extends Pieces{
         super(PieceType.QUEEN, color, x, y);
     }
 
-    @Override
     public boolean move(int newX, int newY, Pieces[][] board) {
 
         {
@@ -50,8 +49,9 @@ public class Queen extends Pieces{
         }
 
         {
-            int j=0;
-            if(Math.abs(this.x-newX) == Math.abs(this.y-newY)) {
+            if(Math.abs(this.x-newX)==Math.abs(this.y-newY)){
+
+                int j=0;
                 for(int i=1; i<Math.abs(this.x-newX); i++){ //ör. 2 adım atar ama 1 boş kareden geçer
                     if(this.x>newX && this.y>newY){
                         if(board[this.x-i][this.y-i] == null){
@@ -74,6 +74,7 @@ public class Queen extends Pieces{
                         }
                     }
                 }
+
                 if(j==Math.abs(this.x-newX)-1){
                     return true;
                 }

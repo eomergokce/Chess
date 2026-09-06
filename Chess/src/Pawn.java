@@ -4,27 +4,30 @@ public class Pawn extends Pieces{
         super(PieceType.PAWN, color, x, y);
     }
 
-    @Override
     public boolean move(int newX, int newY, Pieces[][] board) {
 
         if(board[newX][newY] == null){
 
-            if(this.color==Color.WHITE){
-                if(this.y==6 && newY==4 && board[this.x][5]==null){
-                    return true;
-                }
-                else if(this.y-newY==1){
-                    return true;
-                }
-            }
+            if(this.x == newX){
 
-            else{
-                if(this.y==1 && newY==3 && board[this.x][2]==null){
-                    return true;
+                if(this.color==Color.WHITE){
+                    if(this.y==6 && newY==4 && board[this.x][5]==null){
+                        return true;
+                    }
+                    else if(this.y-newY==1){
+                        return true;
+                    }
                 }
-                else if(newY-this.y==1){
-                    return true;
+
+                else{
+                    if(this.y==1 && newY==3 && board[this.x][2]==null){
+                        return true;
+                    }
+                    else if(newY-this.y==1){
+                        return true;
+                    }
                 }
+
             }
         }
 
