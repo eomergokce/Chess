@@ -12,6 +12,25 @@ public abstract class Pieces {
         this.y = y;
     }
 
+    public char symbol(){
+
+        char c = switch (this.pieceType) {
+            case PAWN -> 'p';
+            case KNIGHT -> 'n';
+            case BISHOP -> 'b';
+            case ROOK -> 'r';
+            case QUEEN -> 'q';
+            case KING -> 'k';
+        };
+
+        if(this.color==Color.WHITE){
+            return Character.toUpperCase(c);
+        }
+        else{
+            return c;
+        }
+    }
+
     public abstract boolean move(int newX, int newY, Pieces[][] board);
 
     public boolean pieceMove(int newX, int newY, Pieces[][] board){  //kural kitapçığı
