@@ -52,7 +52,7 @@ public class Queen extends Pieces{
             if(Math.abs(this.x-newX)==Math.abs(this.y-newY)){
 
                 int j=0;
-                for(int i=1; i<Math.abs(this.x-newX); i++){ //ör. 2 adım atar ama 1 boş kareden geçer
+                for(int i=1; i<Math.abs(this.x-newX); i++){
                     if(this.x>newX && this.y>newY){
                         if(board[this.x-i][this.y-i] == null){
                             j++;

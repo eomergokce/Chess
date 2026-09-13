@@ -33,7 +33,7 @@ public abstract class Pieces {
 
     public abstract boolean move(int newX, int newY, Pieces[][] board);
 
-    public boolean pieceMove(int newX, int newY, Pieces[][] board){  //kural kitapçığı
+    public boolean pieceMove(int newX, int newY, Pieces[][] board){
 
         if(newX<0 || newX>7 || newY<0 || newY>7){
             return false;
@@ -41,11 +41,10 @@ public abstract class Pieces {
         if(board[newX][newY] != null && board[newX][newY].color == this.color){
             return false;
         }
-
-        return true;
+        return move(newX, newY, board);
     }
 
-    public void capture(int newX, int newY, Pieces[][] board){  //move onaylarsa hamle yapılır
+    public void capture(int newX, int newY, Pieces[][] board){
 
         board[this.x][this.y]=null;
         this.x = newX;
